@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>DCiuve.Shared</AssemblyName>
+    <RootNamespace>DCiuve.Shared</RootNamespace>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageId>DCiuve.Shared</PackageId>
+    <PackageProjectUrl>https://github.com/ariuser5/tools</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ariuser5/tools</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>1.0.1</Version>
+    <Authors>ariuser5</Authors>
+    <Description>Shared utilities for DCiuve projects.</Description>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+  </ItemGroup>
+
+</Project>

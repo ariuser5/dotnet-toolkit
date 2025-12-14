@@ -1,2 +1,76 @@
-# dotnet-toolkit
-Reusable dotnet utilities, abstractions and patterns.
+# DCiuve.Shared
+
+Shared utilities: logging, execution pipelines, and CLI application framework.
+
+## Components
+
+### 🔍 Logging (`DCiuve.Shared.Logging`)
+
+Colored console logger with configurable verbosity levels.
+
+```csharp
+using DCiuve.Shared.Logging;
+
+var logger = new Logger { Verbosity = LogLevel.Debug };
+logger.Info("Operation completed: {0}", result);
+```
+
+**Log Levels**: `Quiet` (0) → `Error` (1) → `Warning` (2) → `Info` (3) → `Debug` (4)
+
+### ⚡ ExecutionFlow Pipeline (`DCiuve.Shared.Pipeline`)
+
+Fluent API for data processing pipelines (similar to RxJS operators).
+
+```csharp
+using DCiuve.Shared.Pipeline;
+
+var result = ExecutionFlow
+    .From("hello world")
+    .Map(s => s.ToUpper())
+    .Filter(s => s.Length > 5)
+    .Catch(ex => "ERROR")
+    .Execute();
+```
+
+**Key Operators**: `Map`, `Filter`, `Tap`, `Catch`, `Retry`, `Switch`, `FlatMap`
+
+### 🚀 CLI Application (`DCiuve.Shared.Cli`)
+
+Dependency injection-like system for CLI applications.
+
+```csharp
+using DCiuve.Shared.Cli;
+
+// Automatic parameter resolution by type
+// ILogger auto-injected from ILogVerbosityOptions or default
+return Application.Run(MyMethod, options);
+```
+
+## Integration
+
+### NuGet Package Reference (Recommended)
+
+Add the GitHub Packages feed to your `nuget.config`:
+
+```xml
+<configuration>
+    <packageSources>
+        <add key="github" value="https://nuget.pkg.github.com/ariuser5/index.json" />
+        <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+    </packageSources>
+</configuration>
+```
+
+Then add the package reference to your `.csproj`:
+
+```xml
+<PackageReference Include="DCiuve.Shared" Version="1.0.1" />
+```
+
+> **Note:** You may need to authenticate with a GitHub token to restore packages. See GitHub Packages documentation for details.
+
+```csharp
+using DCiuve.Shared.Logging;
+using DCiuve.Shared.Pipeline;
+using DCiuve.Shared.Cli;
+```
