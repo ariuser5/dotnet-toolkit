@@ -1,0 +1,1 @@
+- Update logging options to allow flag counter (-v, -vv, -vvv)
